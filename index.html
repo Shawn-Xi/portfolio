@@ -3,91 +3,869 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alternative Marketplace - Available Alternative App Marketplace in EU</title>
-    <meta name="description" content="Discover available alternative marketplace in EU">
-    <meta name="keywords" content="Alternative Marketplace, Marketplace app">
+    <title>Shawn Xi | Senior Java Software Engineer</title>
+    <meta name="description" content="Portfolio for Shawn Xi, a senior Java software engineer specializing in Spring Boot, microservices, SaaS architecture, performance optimization, and enterprise systems.">
     <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
+        :root {
+            --ink: #172126;
+            --muted: #5f6f73;
+            --line: #d9e1df;
+            --paper: #f6f5f0;
+            --panel: #ffffff;
+            --accent: #0d766e;
+            --accent-dark: #084f4b;
+            --rust: #a4482d;
+            --gold: #c59a2e;
+            --shadow: 0 18px 45px rgba(23, 33, 38, 0.11);
         }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
+
+        * {
+            box-sizing: border-box;
         }
-        th {
-            background-color: #4CAF50;
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: var(--paper);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            border-bottom: 1px solid rgba(217, 225, 223, 0.9);
+            background: rgba(246, 245, 240, 0.92);
+            backdrop-filter: blur(14px);
+        }
+
+        .nav {
+            width: min(1120px, calc(100% - 32px));
+            margin: 0 auto;
+            min-height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            text-decoration: none;
+            letter-spacing: 0;
+        }
+
+        .brand-mark {
+            width: 38px;
+            height: 38px;
+            display: grid;
+            place-items: center;
+            border-radius: 8px;
             color: white;
+            background: var(--accent-dark);
+            font-size: 0.92rem;
         }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .nav-links a,
+        .button {
+            min-height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 9px 13px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.92rem;
+            white-space: nowrap;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+        }
+
+        .nav-links a:hover {
+            color: var(--ink);
+            background: rgba(13, 118, 110, 0.08);
+        }
+
+        .button {
+            border: 1px solid var(--accent);
+            color: white;
+            background: var(--accent);
+            box-shadow: 0 10px 24px rgba(13, 118, 110, 0.22);
+        }
+
+        .button.secondary {
+            color: var(--accent-dark);
+            background: transparent;
+            box-shadow: none;
+        }
+
+        main {
+            overflow: hidden;
+        }
+
+        .section {
+            padding: 74px 0;
+        }
+
+        .section.tight {
+            padding-top: 42px;
+        }
+
+        .wrap {
+            width: min(1120px, calc(100% - 32px));
+            margin: 0 auto;
+        }
+
+        .hero {
+            min-height: calc(100vh - 68px);
+            display: flex;
+            align-items: center;
+            padding: 72px 0 54px;
+            background:
+                linear-gradient(110deg, rgba(246, 245, 240, 0.98) 0%, rgba(246, 245, 240, 0.91) 53%, rgba(246, 245, 240, 0.72) 100%),
+                url("https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1800&q=80") center / cover;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(310px, 0.8fr);
+            gap: 34px;
+            align-items: end;
+        }
+
+        .eyebrow {
+            margin: 0 0 14px;
+            color: var(--accent-dark);
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.78rem;
+            letter-spacing: 0.08em;
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            margin-top: 0;
+        }
+
+        h1 {
+            max-width: 830px;
+            margin-bottom: 20px;
+            font-size: clamp(0.15rem, 1.6vw, 3.35rem);
+            line-height: 0.96;
+            letter-spacing: 0;
+        }
+
+        .hero-lead {
+            max-width: 720px;
+            margin-bottom: 30px;
+            color: #314044;
+            font-size: clamp(1.08rem, 2vw, 1.38rem);
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 34px;
+        }
+
+        .hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            max-width: 760px;
+        }
+
+        .metric {
+            border-left: 4px solid var(--accent);
+            padding: 10px 12px;
+            background: rgba(255, 255, 255, 0.62);
+        }
+
+        .metric strong {
+            display: block;
+            font-size: 1.35rem;
+            line-height: 1.1;
+        }
+
+        .metric span {
+            color: var(--muted);
+            font-weight: 650;
+            font-size: 0.9rem;
+        }
+
+        .availability {
+            align-self: stretch;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            gap: 16px;
+            padding: 24px;
+            border: 1px solid rgba(8, 79, 75, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.78);
+            box-shadow: var(--shadow);
+        }
+
+        .availability p {
+            margin-bottom: 0;
+            color: var(--muted);
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            min-height: 30px;
+            padding: 4px 9px;
+            border-radius: 8px;
+            color: var(--accent-dark);
+            background: rgba(13, 118, 110, 0.09);
+            font-weight: 750;
+            font-size: 0.84rem;
+        }
+
+        .section-heading {
+            display: grid;
+            grid-template-columns: minmax(0, 0.75fr) minmax(0, 1fr);
+            gap: 32px;
+            align-items: end;
+            margin-bottom: 30px;
+        }
+
+        .section-heading h2 {
+            margin-bottom: 0;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            line-height: 1.05;
+        }
+
+        .section-heading p {
+            margin-bottom: 0;
+            color: var(--muted);
+            font-size: 1.04rem;
+        }
+
+        .strengths {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .card {
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: var(--panel);
+            box-shadow: 0 10px 28px rgba(23, 33, 38, 0.06);
+        }
+
+        .strength-card {
+            padding: 24px;
+            min-height: 260px;
+        }
+
+        .card-icon {
+            width: 46px;
+            height: 46px;
+            display: grid;
+            place-items: center;
+            margin-bottom: 22px;
+            border-radius: 8px;
+            color: white;
+            background: var(--rust);
+            font-weight: 900;
+        }
+
+        .strength-card:nth-child(2) .card-icon {
+            background: var(--accent);
+        }
+
+        .strength-card:nth-child(3) .card-icon {
+            background: var(--gold);
+            color: #2a240f;
+        }
+
+        .strength-card h3,
+        .project h3 {
+            margin-bottom: 10px;
+            font-size: 1.22rem;
+        }
+
+        .strength-card p,
+        .project p,
+        .timeline p,
+        .education p {
+            color: var(--muted);
+        }
+
+        .timeline {
+            position: relative;
+            display: grid;
+            gap: 14px;
+        }
+
+        .role {
+            display: grid;
+            grid-template-columns: 210px minmax(0, 1fr);
+            gap: 28px;
+            padding: 22px;
+            border-left: 5px solid var(--accent);
+        }
+
+        .period {
+            color: var(--rust);
+            font-weight: 850;
+        }
+
+        .role h3 {
+            margin-bottom: 4px;
+            font-size: 1.18rem;
+        }
+
+        .role h4 {
+            margin: 0 0 10px;
+            color: var(--muted);
+            font-size: 0.98rem;
+        }
+
+        .role ul,
+        .project ul {
+            margin: 0;
+            padding-left: 20px;
+            color: var(--muted);
+        }
+
+        .role li + li,
+        .project li + li {
+            margin-top: 7px;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .project {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding: 24px;
+        }
+
+        .project-meta {
+            color: var(--rust);
+            font-weight: 850;
+            font-size: 0.9rem;
+        }
+
+        .skills-layout {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 18px;
+            align-items: start;
+        }
+
+        .skills-panel {
+            padding: 24px;
+        }
+
+        .skills-panel h3 {
+            margin-bottom: 14px;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+        }
+
+        .skill-list span {
+            display: inline-flex;
+            align-items: center;
+            min-height: 32px;
+            padding: 5px 10px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fbfbf8;
+            font-weight: 700;
+            color: #324144;
+            font-size: 0.9rem;
+        }
+
+        .education {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .education article {
+            padding: 22px;
+        }
+
+        .contact-band {
+            color: white;
+            background: var(--accent-dark);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .contact-grid h2 {
+            margin-bottom: 12px;
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            line-height: 1.05;
+        }
+
+        .contact-grid p {
+            max-width: 720px;
+            margin-bottom: 0;
+            color: rgba(255, 255, 255, 0.78);
+        }
+
+        .contact-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .contact-actions .button {
+            border-color: white;
+            color: var(--accent-dark);
+            background: white;
+            box-shadow: none;
+        }
+
+        .contact-actions .button.secondary {
+            color: white;
+            background: transparent;
         }
 
         footer {
-            background-color: #333;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            font-size: 18px;
+            padding: 24px 0;
+            color: var(--muted);
+            background: #ffffff;
         }
-        footer a {
-            color: #ffd700;
-            text-decoration: none;
+
+        footer .wrap {
+            display: flex;
+            justify-content: space-between;
+            gap: 14px;
+            flex-wrap: wrap;
+            font-size: 0.92rem;
         }
-        footer a:hover {
-            color: #ffffff;
+
+        @media (max-width: 880px) {
+            .nav {
+                align-items: flex-start;
+                flex-direction: column;
+                padding: 14px 0;
+            }
+
+            .nav-links {
+                justify-content: flex-start;
+            }
+
+            .hero {
+                min-height: auto;
+            }
+
+            .hero-grid,
+            .section-heading,
+            .skills-layout,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .availability {
+                align-self: auto;
+            }
+
+            .strengths,
+            .project-grid,
+            .education {
+                grid-template-columns: 1fr;
+            }
+
+            .role {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .contact-actions {
+                justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .nav-links a {
+                display: none;
+            }
+
+            .hero-metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 54px 0;
+            }
+
+            .hero {
+                padding-top: 48px;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Available Alternative App Marketplace in EU</h1>
+    <header class="site-header">
+        <nav class="nav" aria-label="Primary navigation">
+            <a class="brand" href="#top" aria-label="Shawn Xi portfolio home">
+                <span class="brand-mark">SX</span>
+                <span>Shawn Xi</span>
+            </a>
+            <div class="nav-links">
+                <a href="#work">Work</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#education">Education</a>
+                <a class="button" href="mailto:shawn.wind.xi@gmail.com">Contact</a>
+            </div>
+        </nav>
+    </header>
 
-    <section id="whats-about">
-        <h2>What's this about</h2>
-        <p>As Apple announced, <a href="https://support.apple.com/en-gb/118110">"Users based in the European Union with an iPhone have the ability to install apps using alternative app marketplaces"</a> from iOS 17.4. But just a few marketplace is available for now. To reduce the effort to find them out, list in this page.</p>
-    </section>
+    <main id="top">
+        <section class="hero">
+            <div class="wrap hero-grid">
+                <div>
+                    <p class="eyebrow">Senior Software Engineer | Java | SaaS | Performance</p>
+                    <h1>Building reliable enterprise systems with clear architecture and measurable performance gains.</h1>
+                    <p class="hero-lead">I am Shawn Xi, a Java engineer in Auckland with 10 years of software engineering experience across Spring Boot, microservices, multi-tenant SaaS platforms, device management, and high-traffic community systems.</p>
+                    <div class="hero-actions">
+                        <a class="button" href="mailto:shawn.wind.xi@gmail.com">Email Shawn</a>
+                        <a class="button secondary" href="Resume%20Shawn%20A3.pdf" target="_blank" rel="noreferrer">View resume</a>
+                    </div>
+                    <div class="hero-metrics" aria-label="Professional highlights">
+                        <div class="metric">
+                            <strong>10 yrs</strong>
+                            <span>Java engineering</span>
+                        </div>
+                        <div class="metric">
+                            <strong>25-30</strong>
+                            <span>peak team size led</span>
+                        </div>
+                        <div class="metric">
+                            <strong>1M DAU</strong>
+                            <span>Huawei community system</span>
+                        </div>
+                    </div>
+                </div>
+                <aside class="availability" aria-label="Current status">
+                    <div>
+                        <p class="eyebrow">Current Status</p>
+                        <h2>Master of Software Engineering student in Auckland.</h2>
+                        <p>Available 25 hours per week during term and full-time during holidays. Eligible for a 3-year Post Study Work Visa after graduation in April 2027.</p>
+                    </div>
+                    <div class="tag-row">
+                        <span class="tag">Spring Boot</span>
+                        <span class="tag">Spring Cloud</span>
+                        <span class="tag">Hibernate</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">React</span>
+                    </div>
+                </aside>
+            </div>
+        </section>
 
-    <section id="marketplace-app">
-        <h2>Marketplace App</h2>
-        <table border="1">
-            <tr>
-                <th>Name</th>
-                <th>Official Websites</th>
-                <th>Available</th>
-                <th>Remark</th>
-            </tr>
-            <tr>
-                <td>AltStore</td>
-                <td><a href="https://altstore.io/">https://altstore.io/</a></td>
-                <td>YES</td>
-                <td>Only AltStore PAL is a format of Alternative Marketplace. AltStore (World) is an old version which have nothing to do with Apple new feature. Download from: https://altstore.io/#Downloads</td>
-            </tr>
-            <tr>
-                <td>Setapp</td>
-                <td><a href="https://setapp.com/">https://setapp.com/</a></td>
-                <td>NO</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Mobivention </td>
-                <td><a href="https://mobivention.com/">https://mobivention.com/</a></td>
-                <td>YES</td>
-                <td>A B2B app, not available for personal users.</td>
-            </tr>
-        </table>
-    </section>
+        <section class="section tight" aria-labelledby="strengths-title">
+            <div class="wrap">
+                <div class="section-heading">
+                    <h2 id="strengths-title">What I bring</h2>
+                    <p>My strongest work sits where backend depth, production troubleshooting, and system-level ownership meet.</p>
+                </div>
+                <div class="strengths">
+                    <article class="card strength-card">
+                        <div class="card-icon">01</div>
+                        <h3>Enterprise backend delivery</h3>
+                        <p>Designs and implements Java services with Spring Boot, Spring Cloud, Spring Security, MyBatis, Hibernate, Redis, MySQL, Microsoft SQL Server, Kafka, and RocketMQ.</p>
+                    </article>
+                    <article class="card strength-card">
+                        <div class="card-icon">02</div>
+                        <h3>Production problem solving</h3>
+                        <p>Tracks issues from reproduction through logs, local debugging, JVM inspection, heap dumps, and database query analysis to reach clear root causes and practical fixes.</p>
+                    </article>
+                    <article class="card strength-card">
+                        <div class="card-icon">03</div>
+                        <h3>Technical leadership</h3>
+                        <p>Leads design reviews, architecture discussions, code reviews, technical research, interview loops, team training, and delivery standards for cross-functional engineering teams.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-    <section id="web-app">
-        <h2>Web Distribution Apps</h2>
-        <p>As Apple announced in <a href="https://developer.apple.com/support/web-distribution-eu/">Web Distribution In the EU</a>, apps more than 1B downloads/month can distribute app from it's own web page, besides App Store. No app is ready for now.</p>
-    </section>
+        <section class="section" id="work" aria-labelledby="work-title">
+            <div class="wrap">
+                <div class="section-heading">
+                    <h2 id="work-title">Work experience</h2>
+                    <p>A progression from hands-on Java engineering to senior delivery, architecture ownership, and team leadership.</p>
+                </div>
+                <div class="timeline">
+                    <article class="card role">
+                        <div class="period">May 2022 - Dec 2025</div>
+                        <div>
+                            <h3>Senior Software Engineer</h3>
+                            <h4>Cloud Software Group, formerly Citrix &amp; TIBCO</h4>
+                            <ul>
+                                <li>Implemented features for device management, including support around Apple's Declarative Device Management protocol.</li>
+                                <li>Resolved production issues through reproduction, log analysis, local debugging, root-cause identification, and maintainable fixes.</li>
+                                <li>Worked across iOS applications, backend services, React tasks, and Cordova sample application maintenance.</li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="card role">
+                        <div class="period">Nov 2020 - May 2022</div>
+                        <div>
+                            <h3>Staff Software Engineer</h3>
+                            <h4>Home Of Truck Technology</h4>
+                            <ul>
+                                <li>Led team management, technical standards, code reviews, architecture design, technical research, and project planning.</li>
+                                <li>Designed and implemented core services for gas, LNG, messaging, accounts, proprietary channels, QR binding, and multi-card signatures.</li>
+                                <li>Improved technical capability across the team through training, assessment, and ownership of difficult cross-team problems.</li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="card role">
+                        <div class="period">Nov 2019 - Nov 2020</div>
+                        <div>
+                            <h3>System Engineer</h3>
+                            <h4>Beijing FESCO Adecco, on-site at Huawei</h4>
+                            <ul>
+                                <li>Handled technical research, progress control, solution design, code review, core module development, and application performance optimization.</li>
+                                <li>Located and solved technical issues while supporting delivery quality for Huawei projects.</li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="card role">
+                        <div class="period">Mar 2017 - Oct 2019</div>
+                        <div>
+                            <h3>Software Engineer</h3>
+                            <h4>Bill-JC Information Technology, contractor for Huawei</h4>
+                            <ul>
+                                <li>Developed and maintained router and switch management tools for Huawei.</li>
+                                <li>Designed small project modules and started leading a team before promotion to Huawei system engineer.</li>
+                            </ul>
+                        </div>
+                    </article>
+                    <article class="card role">
+                        <div class="period">Sep 2015 - Feb 2017</div>
+                        <div>
+                            <h3>Software Engineer</h3>
+                            <h4>HangShang Information Technology</h4>
+                            <ul>
+                                <li>Developed and maintained enterprise websites.</li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="projects" aria-labelledby="projects-title">
+            <div class="wrap">
+                <div class="section-heading">
+                    <h2 id="projects-title">Selected projects</h2>
+                    <p>Case studies from SaaS, payments, and high-scale community products.</p>
+                </div>
+                <div class="project-grid">
+                    <article class="card project">
+                        <div class="project-meta">Cloud Software Group | 2022-2025</div>
+                        <h3>CEM server development and maintenance</h3>
+                        <p>Enhanced a multi-tenant SaaS server where customers share the same API and web surface while routing requests to separate databases.</p>
+                        <ul>
+                            <li>Used Java thread-local context to carry site codes and choose the correct database connection.</li>
+                            <li>Investigated out-of-memory failures with heap dumps, JMap, and JVisualVM.</li>
+                            <li>Reduced database lag by breaking large join-heavy queries into simpler table-specific operations.</li>
+                        </ul>
+                        <div class="tag-row">
+                            <span class="tag">Java</span>
+                            <span class="tag">Spring Boot</span>
+                            <span class="tag">Hibernate</span>
+                            <span class="tag">Docker</span>
+                        </div>
+                    </article>
+                    <article class="card project">
+                        <div class="project-meta">Home Of Truck | 2021</div>
+                        <h3>Account service</h3>
+                        <p>Designed and built a company account system connecting internal accounts with multiple third-party payment platforms.</p>
+                        <ul>
+                            <li>Delivered recharge, transfer, consumption, and cash tracing capabilities.</li>
+                            <li>Designed a cash tracing model that tracked every cent while reducing stored data by 99%.</li>
+                            <li>Built bitmap filtering to prevent repeated advertising pushes.</li>
+                        </ul>
+                        <div class="tag-row">
+                            <span class="tag">Spring Cloud</span>
+                            <span class="tag">MyBatis</span>
+                            <span class="tag">Redis</span>
+                            <span class="tag">Kafka</span>
+                        </div>
+                    </article>
+                    <article class="card project">
+                        <div class="project-meta">Huawei | 2020</div>
+                        <h3>Huawei Fans Club</h3>
+                        <p>Controlled progress and quality for a high-traffic community platform with 1 million daily active users and 10 million generated user data records.</p>
+                        <ul>
+                            <li>Standardized development processes and trained core team members.</li>
+                            <li>Designed user behavior statistics services and resolved mobile editor compatibility issues.</li>
+                            <li>Supported a team that reached 25-30 people at peak staffing.</li>
+                        </ul>
+                        <div class="tag-row">
+                            <span class="tag">Spring Boot</span>
+                            <span class="tag">Vue</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">HSF</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="skills" aria-labelledby="skills-title">
+            <div class="wrap">
+                <div class="section-heading">
+                    <h2 id="skills-title">Technical stack</h2>
+                    <p>Grouped for quick scanning by hiring managers and engineering leads.</p>
+                </div>
+                <div class="skills-layout">
+                    <article class="card skills-panel">
+                        <h3>Backend and architecture</h3>
+                        <div class="skill-list">
+                            <span>Java</span>
+                            <span>Spring Boot</span>
+                            <span>Spring Cloud</span>
+                            <span>Spring Security</span>
+                            <span>MyBatis</span>
+                            <span>Hibernate</span>
+                            <span>Microservices</span>
+                            <span>Multi-tenant SaaS</span>
+                            <span>System design</span>
+                        </div>
+                    </article>
+                    <article class="card skills-panel">
+                        <h3>Data, messaging, and operations</h3>
+                        <div class="skill-list">
+                            <span>MySQL</span>
+                            <span>Microsoft SQL Server</span>
+                            <span>Redis</span>
+                            <span>Elasticsearch</span>
+                            <span>Mycat</span>
+                            <span>Kafka</span>
+                            <span>RocketMQ</span>
+                            <span>Nacos</span>
+                            <span>Docker</span>
+                            <span>JVM tuning</span>
+                            <span>JMap</span>
+                            <span>JVisualVM</span>
+                        </div>
+                    </article>
+                    <article class="card skills-panel">
+                        <h3>Frontend and mobile-adjacent</h3>
+                        <div class="skill-list">
+                            <span>JavaScript</span>
+                            <span>ES6+</span>
+                            <span>Vue</span>
+                            <span>React</span>
+                            <span>Cordova</span>
+                            <span>iOS app support</span>
+                        </div>
+                    </article>
+                    <article class="card skills-panel">
+                        <h3>Workflow</h3>
+                        <div class="skill-list">
+                            <span>Code review</span>
+                            <span>Technical research</span>
+                            <span>Performance optimization</span>
+                            <span>Production debugging</span>
+                            <span>Cursor</span>
+                            <span>Copilot</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="education" aria-labelledby="education-title">
+            <div class="wrap">
+                <div class="section-heading">
+                    <h2 id="education-title">Education</h2>
+                    <p>Current postgraduate study in New Zealand, backed by a computer-focused GIS degree.</p>
+                </div>
+                <div class="education">
+                    <article class="card">
+                        <div class="period">Current - Apr 2027</div>
+                        <h3>Master of Software Engineering</h3>
+                        <p>Yoobee College of Creative Innovation, Auckland.</p>
+                    </article>
+                    <article class="card">
+                        <div class="period">Sep 2007 - Jun 2011</div>
+                        <h3>Bachelor of Geographic Information System</h3>
+                        <p>Central South University, with study across computer networks, databases, and related software foundations.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section contact-band" id="contact" aria-labelledby="contact-title">
+            <div class="wrap contact-grid">
+                <div>
+                    <h2 id="contact-title">Let us talk about backend systems that need steady ownership.</h2>
+                    <p>Based in Auckland. Open to software engineering opportunities aligned with Java, Spring, SaaS systems, performance work, and technical leadership.</p>
+                </div>
+                <div class="contact-actions">
+                    <a class="button" href="mailto:shawn.wind.xi@gmail.com">shawn.wind.xi@gmail.com</a>
+                    <a class="button secondary" href="tel:+64275419465">027 541 9465</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <span>&copy; 2026 Shawn Xi</span>
+            <span>Auckland, New Zealand</span>
+        </div>
+    </footer>
 </body>
-
-<footer>
-    <p>© 2024 Shawn Xi</p> 
-    <p>Only for usage of personal reference. If you get any information to update, you are very welcome to leave a message in <a href="https://github.com/Shawn-Xi/available-alternative-app-marketplace-in-EU/issues">Issue Page</a>
-    </p>
-</footer>
 </html>
